@@ -59,7 +59,7 @@ def leave_one_out_cross_validation(data, current_set_of_features, feature_to_add
 
     return accuracy
 
-
+# Pseudo code from matlab(Project_2_Briefing slide) Basically the same as forward search, the only difference is the bottom up format
 def backward_elimination(data):
     print('Backward Search ')
 
