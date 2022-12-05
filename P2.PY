@@ -20,7 +20,7 @@ def ParseData(path):
     # print(type(numpy_array))
     return numpy_array
     # return data
-# Pseudo code from matlab code(Project_2_Briefing slide)
+# My code strictly follows the Matlab code in the slide provided by the professor(Project_2_Briefing.pptx).
 def leave_one_out_cross_validation(data, current_set_of_features, feature_to_add):
 
     #temp = copy(current_set_of_features)
