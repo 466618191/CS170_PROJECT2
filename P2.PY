@@ -21,8 +21,6 @@ def ParseData(path):
     return numpy_array
     # return data
 # Pseudo code from matlab code(Project_2_Briefing slide)
-
-
 def leave_one_out_cross_validation(data, current_set_of_features, feature_to_add):
 
     #temp = copy(current_set_of_features)
