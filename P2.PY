@@ -40,7 +40,7 @@ def leave_one_out_cross_validation(data, current_set_of_features, feature_to_add
         for k in range(Data_length):
             if k != i:
                 distance = 0
-                # Euclidean Distance Formula, How to convert distance = sqrt(sum((object_to_classify - data(k,2:end)).^2))(slide's matlab code) I ask my friend and he told me basic logic and done by myself
+                # Euclidean Distance Formula, How to convert distance = sqrt(sum((object_to_classify - data(k,2:end)).^2))(slide's matlab code) I asked my friend and he told me basic logic and done by myself
                 for feature in current_set_of_features:
                     dif = data[i][feature] - data[k][feature]
                     distance += pow(dif, 2)
