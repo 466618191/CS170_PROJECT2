@@ -27,9 +27,7 @@ def ParseData(path):
 
 def leave_one_out_cross_validation(data, current_set_of_features, feature_to_add):
 
-    #temp = copy(current_set_of_features)
 
-    # current_set_of_features.append(feature_to_add)
     number_correctly_classfied = 0
 
     for i in range(Data_length):
