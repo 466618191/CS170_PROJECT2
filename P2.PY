@@ -147,7 +147,7 @@ def feature_search(data):
             Current_best_set = current_set_of_features.copy()  # store current best set
             Fullset_accuracy = best_so_far_accuracy
 
-    # prof mentioned 3 decimal place
+    
     Fullset_accuracy = round(Fullset_accuracy * 100, 3)
 
     print("Finished search! The best feature subset is", Current_best_set,
