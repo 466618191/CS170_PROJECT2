@@ -12,6 +12,7 @@ Data_length = 0
 #numpy_array = df.to_numpy()
 # https://www.folkstalk.com/2022/10/python-read-csv-into-array-with-code-examples.html
 
+
 def ParseData(path):
 
     # https://www.geeksforgeeks.org/pandas-dataframe-to_numpy-convert-dataframe-to-numpy-array/
@@ -20,7 +21,10 @@ def ParseData(path):
     # print(type(numpy_array))
     return numpy_array
     # return data
-# My code strictly follows the Matlab code in the slide provided by the professor(Project_2_Briefing.pptx).
+
+
+# Pseudo code from matlab code(Project_2_Briefing slide)
+
 def leave_one_out_cross_validation(data, current_set_of_features, feature_to_add):
 
     #temp = copy(current_set_of_features)
@@ -57,23 +61,27 @@ def leave_one_out_cross_validation(data, current_set_of_features, feature_to_add
 
     return accuracy
 
-# Pseudo code from matlab(Project_2_Briefing slide) Basically the same as forward search, the only difference is the bottom up format
+# Pseudo code from matlab(Project_2_Briefing slide) Basically the same as forward search, the only difference is the bottom up format,We need to store all features first
+
+
 def backward_elimination(data):
     print('Backward Search ')
 
     Fullset_accuracy = 0
     current_set_of_features = []
 
-    for i in range(1, len(data[0])):  # add all
+    # add all, consult my friend he told me basic idea, and done by myself
+    for i in range(1, len(data[0])):
         current_set_of_features.append(i)
    # print(current_set_of_features)
+    # create temp to pass  to leave_one_out_cross_validation
     temp2 = copy(current_set_of_features)
     # print(temp2)
     temp = round(leave_one_out_cross_validation(data, temp2, 0) * 100, 2)
 
     print('Feature', current_set_of_features,
           ', Accuracy is', temp, '%. Beginning search')
-    for i in range(1, len(data[0])-1):
+    for i in range(1, len(data[0])-1):  # basic logic same as feature_search
         feature_to_remove_at_this_level = []
         best_so_far_accuracy = 0
         for j in range(1, len(data[0])):
@@ -125,19 +133,21 @@ def feature_search(data):
                 accuracy = (leave_one_out_cross_validation(
                     data, temp, j))
 
-                if accuracy > best_so_far_accuracy:  # logic same as project2 slide. Current best set
+                if accuracy > best_so_far_accuracy:  # logic same as project2 slide. Update Current best accuracy and feature_to_add_at_this_level
                     best_so_far_accuracy = accuracy
                     feature_to_add_at_this_level = j
 
-        current_set_of_features.append(feature_to_add_at_this_level)
+        current_set_of_features.append(
+            feature_to_add_at_this_level)  # append to list
 
         print(
             f'Feature set {current_set_of_features} was best, accuracy: {round(best_so_far_accuracy * 100, 2)}%')
 
         if best_so_far_accuracy > Fullset_accuracy:
-            Current_best_set = current_set_of_features.copy()
+            Current_best_set = current_set_of_features.copy()  # store current best set
             Fullset_accuracy = best_so_far_accuracy
 
+    # prof mentioned 3 decimal place
     Fullset_accuracy = round(Fullset_accuracy * 100, 3)
 
     print("Finished search! The best feature subset is", Current_best_set,
@@ -167,3 +177,4 @@ if __name__ == '__main__':
     end_time = time.time()
 
     print("Total Time: {:.2f}sec".format(end_time - start_time))
+
